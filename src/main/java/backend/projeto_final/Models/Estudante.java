@@ -14,7 +14,7 @@ public class Estudante {
     private Long idEstudante;
 
     private String nome;
-    private int contato;
+    private String contato;
 
     @ManyToMany
     @JoinTable(
@@ -26,10 +26,9 @@ public class Estudante {
 
     public Estudante() {}
 
-    public Estudante(String nome, int contato, Set<Projeto> projetos) {
+    public Estudante(String nome, String contato) {
         this.nome = nome;
         this.contato = contato;
-        this.projetos = projetos;
     }
 
     public Long getIdEstudante() {
@@ -48,11 +47,11 @@ public class Estudante {
         this.nome = nome;
     }
 
-    public int getContato() {
+    public String getContato() {
         return contato;
     }
 
-    public void setContato(int contato) {
+    public void setContato(int String) {
         this.contato = contato;
     }
 
