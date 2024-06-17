@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
-@Repository
-
 // modelo e tipo da primary key dentro do <>
+
+@Repository
 public interface EstudanteRepository extends JpaRepository<Estudante, UUID> {
 }

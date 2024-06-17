@@ -3,6 +3,7 @@ package backend.projeto_final.Models;
 import jakarta.persistence.*;
 
 import java.util.Set;
+import java.util.UUID;
 
 
 @Entity
@@ -10,7 +11,7 @@ import java.util.Set;
 public class Projeto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idProjeto;
+    private UUID idProjeto;
     private String tema;
 
     @ManyToOne
@@ -27,11 +28,11 @@ public class Projeto {
         this.curso = curso;
     }
 
-    public Long getIdProjeto() {
+    public UUID getIdProjeto() {
         return idProjeto;
     }
 
-    public void setIdProjeto(Long idProjeto) {
+    public void setIdProjeto(UUID idProjeto) {
         this.idProjeto = idProjeto;
     }
 

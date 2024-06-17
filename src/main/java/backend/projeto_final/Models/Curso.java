@@ -3,6 +3,7 @@ package backend.projeto_final.Models;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name= "cursos")
@@ -10,7 +11,7 @@ public class Curso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idCurso;
+    private UUID idCurso;
     private String nomeCurso;
 
     @OneToMany(mappedBy = "curso")
@@ -23,11 +24,11 @@ public class Curso {
         this.nomeCurso = nomeCurso;
     }
 
-    public Long getIdCurso() {
+    public UUID getIdCurso() {
         return idCurso;
     }
 
-    public void setIdCurso(Long idCurso) {
+    public void setIdCurso(UUID idCurso) {
         this.idCurso = idCurso;
     }
 

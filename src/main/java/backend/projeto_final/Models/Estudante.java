@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 
 @Entity
@@ -11,7 +12,7 @@ import java.util.Set;
 public class Estudante {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idEstudante;
+    private UUID idEstudante;
 
     private String nome;
     private String contato;
@@ -31,11 +32,11 @@ public class Estudante {
         this.contato = contato;
     }
 
-    public Long getIdEstudante() {
+    public UUID getIdEstudante() {
         return idEstudante;
     }
 
-    public void setIdEstudante(Long idEstudante) {
+    public void setIdEstudante(UUID idEstudante) {
         this.idEstudante = idEstudante;
     }
 

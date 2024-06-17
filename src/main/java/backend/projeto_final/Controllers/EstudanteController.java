@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping
@@ -20,16 +21,23 @@ public class EstudanteController {
     @Autowired
     EstudanteMapper estudanteMapper;
 
-    @PostMapping("adicionarEstudante")
-    public ResponseEntity<Estudante> adicionarEstudante(@RequestBody @Valid EstudanteDto estudanteDto){
-        Estudante estudante = estudanteMapper.toEntity(estudanteDto);
-        estudanteService.save(estudante);
-        return ResponseEntity.ok(estudante);
-    }
     @GetMapping("verTodosEstudantes")
     public ResponseEntity<List<Estudante>> verTodosEstudantes(){
-        List<Estudante> lista = estudanteService.retornaTodosEstudantes();
+        List<Estudante> lista = estudanteService.verTodosEstudantes();
         return ResponseEntity.ok(lista);
+    }
+
+    @PostMapping("salvarEstudante")
+    public ResponseEntity<Estudante> salvarEstudante(@RequestBody @Valid EstudanteDto estudanteDto){
+        Estudante estudante = estudanteMapper.toEntity(estudanteDto);
+        estudanteService.salvarEstudante(estudante);
+        return ResponseEntity.ok(estudante);
+    }
+
+    @PostMapping("/{idEstudante}/projetos/{idProjeto}")
+    public ResponseEntity<Estudante> vincularProjeto(@PathVariable UUID idEstudante, @PathVariable UUID idProjeto) {
+        Estudante estudanteAtualizado = estudanteService.vincularProjeto(idEstudante, idProjeto);
+        return ResponseEntity.ok(estudanteAtualizado);
     }
 
 }
