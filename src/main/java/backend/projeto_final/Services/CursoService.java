@@ -14,23 +14,23 @@ public class CursoService {
     @Autowired
     CursoRepository cursoRepository;
 
-    // retornar todos os cursos
-    public List<Curso> retornaTodosCursos() {
+    // ver todos os cursos
+    public List<Curso> verTodosCursos() {
         return cursoRepository.findAll();
     }
 
     // retornar curso pelo id
-    public Optional<Curso> getOne(UUID idCurso){
+    public Optional<Curso> verCurso(UUID idCurso){
         return cursoRepository.findById(idCurso);
     }
 
     // salvar novo curso
-    public Curso save(Curso novoCurso){
+    public Curso salvarCurso(Curso novoCurso){
         return cursoRepository.save(novoCurso);
     }
 
     // deletar curso pelo id
-    public Curso delete(UUID idCurso) {
+    public Curso deletarCurso(UUID idCurso) {
         Curso curso = cursoRepository.findById(idCurso).get();
         cursoRepository.delete(curso);
         return curso;

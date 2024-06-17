@@ -1,5 +1,6 @@
 package backend.projeto_final.Services;
 
+import backend.projeto_final.Models.Curso;
 import backend.projeto_final.Models.Estudante;
 import backend.projeto_final.Models.Projeto;
 import backend.projeto_final.Repositories.EstudanteRepository;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -23,9 +25,21 @@ public class EstudanteService {
         return estudanteRepository.findAll();
     }
 
+    // retornar estudante pelo id
+    public Optional<Estudante> verEstudante(UUID idEstudante){
+        return estudanteRepository.findById(idEstudante);
+    }
+
     // salvar novo estudante
     public void salvarEstudante(Estudante novoEstudante){
         estudanteRepository.save(novoEstudante);
+    }
+
+    // deletar estudante pelo id
+    public Estudante deletarEstudante(UUID idEstudante) {
+        Estudante estudante = estudanteRepository.findById(idEstudante).get();
+        estudanteRepository.delete(estudante);
+        return estudante;
     }
 
     // vincular estudante a um projeto
