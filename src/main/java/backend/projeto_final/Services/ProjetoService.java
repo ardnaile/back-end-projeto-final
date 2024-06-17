@@ -37,4 +37,9 @@ public class ProjetoService {
         return projeto;
     }
 
+    // procurar curso por tema
+    public List<Projeto> buscarProjetoPorTema(String tema){
+        return projetoRepository.findByTema(tema);
+    }
+
 }

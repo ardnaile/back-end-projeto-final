@@ -54,4 +54,10 @@ public class EstudanteController {
         return ResponseEntity.ok(estudante);
     }
 
+    @GetMapping("/buscarEstudante/tema/{temaPreferido}")
+    public ResponseEntity<List<Estudante>> buscarEstudantePorTemaPreferido(@PathVariable String temaPreferido){
+        List<Estudante> lista = estudanteService.buscarEstudantePorTemaPreferido(temaPreferido);
+        return ResponseEntity.ok(lista);
+    }
+
 }

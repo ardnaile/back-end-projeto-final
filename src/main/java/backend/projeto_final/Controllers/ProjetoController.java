@@ -47,4 +47,10 @@ public class ProjetoController {
         Projeto projeto = projetoService.deletarProjeto(idProjeto);
         return ResponseEntity.ok(projeto);
     }
+
+    @GetMapping("/buscarProjeto/tema/{tema}")
+    public ResponseEntity<List<Projeto>> buscarProjetoPorTema(@PathVariable String tema){
+        List<Projeto> lista = projetoService.buscarProjetoPorTema(tema);
+        return ResponseEntity.ok(lista);
+    }
 }

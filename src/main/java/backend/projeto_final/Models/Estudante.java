@@ -16,6 +16,7 @@ public class Estudante {
 
     private String nome;
     private String contato;
+    private String temaPreferido;
 
     @ManyToMany
     @JoinTable(
@@ -27,9 +28,10 @@ public class Estudante {
 
     public Estudante() {}
 
-    public Estudante(String nome, String contato) {
+    public Estudante(String nome, String contato, String temaPreferido) {
         this.nome = nome;
         this.contato = contato;
+        this.temaPreferido = temaPreferido;
     }
 
     public UUID getIdEstudante() {
@@ -62,5 +64,13 @@ public class Estudante {
 
     public void setProjeto(Set<Projeto> projetos) {
         this.projetos = projetos;
+    }
+
+    public String getTemaPreferido() {
+        return temaPreferido;
+    }
+
+    public void setTemaPreferido(String temaPreferido) {
+        this.temaPreferido = temaPreferido;
     }
 }

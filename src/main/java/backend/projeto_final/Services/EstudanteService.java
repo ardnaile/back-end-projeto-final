@@ -53,4 +53,9 @@ public class EstudanteService {
         estudante.getProjeto().add(projeto);
         return estudanteRepository.save(estudante);
     }
+
+    // buscar aluno por tema preferido
+    public List<Estudante> buscarEstudantePorTemaPreferido(String temaPreferido) {
+        return estudanteRepository.findByTemaPreferido(temaPreferido);
+    }
 }

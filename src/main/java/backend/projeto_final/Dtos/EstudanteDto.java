@@ -9,4 +9,5 @@ public record EstudanteDto(
         String nome,
         @NotNull (message = "O contato não pode ser nulo")
         @Size(min = 11, max = 11, message = "O contato deve ter 11 caracteres sem espaço (ddd + número)")
-        String contato) {}
+        String contato,
+        String temaPreferido) {}

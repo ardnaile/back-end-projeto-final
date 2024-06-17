@@ -10,7 +10,8 @@ public class EstudanteMapper {
     public Estudante toEntity(EstudanteDto estudanteDto){
         Estudante objeto = new Estudante(
                 estudanteDto.nome(),
-                estudanteDto.contato()
+                estudanteDto.contato(),
+                estudanteDto.temaPreferido()
         );
         return objeto;
     }
