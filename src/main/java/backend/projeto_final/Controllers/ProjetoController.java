@@ -32,7 +32,7 @@ public class ProjetoController {
 
     @GetMapping("/verProjeto/{idProjeto}")
     public ResponseEntity<Projeto> verProjeto(@PathVariable UUID idProjeto){
-        Projeto projeto = projetoService.verProjeto(idProjeto).orElseThrow(()-> new NoSuchElementException("Projeto não encontrado com ID: " + idCurso));
+        Projeto projeto = projetoService.verProjeto(idProjeto).orElseThrow(()-> new NoSuchElementException("Projeto não encontrado com ID: " + idProjeto));
         return ResponseEntity.ok(projeto);
     }
 

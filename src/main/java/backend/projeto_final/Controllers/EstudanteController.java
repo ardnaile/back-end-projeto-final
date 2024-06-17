@@ -31,7 +31,7 @@ public class EstudanteController {
 
     @GetMapping("/verEstudante/{idEstudante}")
     public ResponseEntity<Estudante> verEstudante(@PathVariable UUID idEstudante){
-        Estudante estudante = estudanteService.verEstudante(idEstudante).orElseThrow(()-> new NoSuchElementException("Estudante não encontrado com ID: " + idCurso));
+        Estudante estudante = estudanteService.verEstudante(idEstudante).orElseThrow(()-> new NoSuchElementException("Estudante não encontrado com ID: " + idEstudante));
         return ResponseEntity.ok(estudante);
     }
 
