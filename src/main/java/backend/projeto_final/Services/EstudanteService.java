@@ -6,6 +6,7 @@ import backend.projeto_final.Models.Projeto;
 import backend.projeto_final.Repositories.EstudanteRepository;
 import backend.projeto_final.Repositories.ProjetoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
