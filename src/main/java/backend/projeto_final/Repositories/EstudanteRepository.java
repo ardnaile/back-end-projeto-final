@@ -12,4 +12,5 @@ import java.util.UUID;
 @Repository
 public interface EstudanteRepository extends JpaRepository<Estudante, UUID> {
     List<Estudante> findByTemaPreferido(String temaPreferido);
+    List<Estudante> findAll(Pageable pageable);
 }

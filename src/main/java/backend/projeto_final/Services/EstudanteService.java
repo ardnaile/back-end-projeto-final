@@ -21,8 +21,8 @@ public class EstudanteService {
     ProjetoRepository projetoRepository;
 
     // ver todos os estudantes
-    public List<Estudante> verTodosEstudantes() {
-        return estudanteRepository.findAll();
+    public List<Estudante> verTodosEstudantes(int pagina, int itens) {
+        return estudanteRepository.findAll(PageRequest.of(pagina, itens)).stream().toList();
     }
 
     // retornar estudante pelo id

@@ -26,8 +26,8 @@ public class ProjetoController {
     ProjetoMapper projetoMapper;
 
     @GetMapping("verTodosProjetos")
-    public ResponseEntity<List<Projeto>> verTodosProjetos(){
-        List<Projeto> lista = projetoService.verTodosProjetos();
+    public ResponseEntity<List<Projeto>> verTodosProjetos(@RequestParam int pagina, @RequestParam int itens){
+        List<Projeto> lista = projetoService.verTodosProjetos(pagina, itens);
         return ResponseEntity.ok(lista);
     }
 

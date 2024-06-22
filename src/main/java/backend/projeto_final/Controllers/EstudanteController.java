@@ -24,8 +24,8 @@ public class EstudanteController {
     EstudanteMapper estudanteMapper;
 
     @GetMapping("verTodosEstudantes")
-    public ResponseEntity<List<Estudante>> verTodosEstudantes(){
-        List<Estudante> lista = estudanteService.verTodosEstudantes();
+    public ResponseEntity<List<Estudante>> verTodosEstudantes(@RequestParam int pagina, @RequestParam int itens){
+        List<Estudante> lista = estudanteService.verTodosEstudantes(pagina, itens);
         return ResponseEntity.ok(lista);
     }
 
