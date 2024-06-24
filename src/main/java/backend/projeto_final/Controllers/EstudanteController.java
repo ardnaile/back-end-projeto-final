@@ -1,9 +1,12 @@
 package backend.projeto_final.Controllers;
 
+import org.springframework.security.core.Authentication;
+
 import backend.projeto_final.Dtos.EstudanteDto;
 import backend.projeto_final.Mappers.EstudanteMapper;
 import backend.projeto_final.Models.Curso;
 import backend.projeto_final.Models.Estudante;
+import backend.projeto_final.Models.Usuario;
 import backend.projeto_final.Services.EstudanteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +26,8 @@ public class EstudanteController {
     @Autowired
     EstudanteMapper estudanteMapper;
 
-    @GetMapping("verTodosEstudantes")
-    public ResponseEntity<List<Estudante>> verTodosEstudantes(@RequestParam int pagina, @RequestParam int itens){
+    @GetMapping("/verTodosEstudantes")
+    public ResponseEntity<List<Estudante>> verTodosEstudantes(@RequestParam(defaultValue = "0") int pagina, @RequestParam(defaultValue = "10") int itens){
         List<Estudante> lista = estudanteService.verTodosEstudantes(pagina, itens);
         return ResponseEntity.ok(lista);
     }
@@ -35,7 +38,7 @@ public class EstudanteController {
         return ResponseEntity.ok(estudante);
     }
 
-    @PostMapping("salvarEstudante")
+    @PostMapping("/salvarEstudante")
     public ResponseEntity<Estudante> salvarEstudante(@RequestBody @Valid EstudanteDto estudanteDto){
         Estudante estudante = estudanteMapper.toEntity(estudanteDto);
         estudanteService.salvarEstudante(estudante);
@@ -48,9 +51,10 @@ public class EstudanteController {
         return ResponseEntity.ok(estudanteAtualizado);
     }
 
-    @DeleteMapping("/deletarEstudante/{idEstudante}")
-    public ResponseEntity<Estudante> deletarEstudante(@PathVariable UUID idEstudante){
-        Estudante estudante = estudanteService.deletarEstudante(idEstudante);
+    @DeleteMapping("/deletarEstudante/{idEstudante}") // corrigir
+    public ResponseEntity<Estudante> deletarEstudante(@PathVariable UUID idEstudante, Authentication authentication){
+        Usuario usuarioAutenticado = (Usuario) authentication.getPrincipal();
+        Estudante estudante = estudanteService.deletarEstudante(idEstudante, usuarioAutenticado.getId());
         return ResponseEntity.ok(estudante);
     }
 
