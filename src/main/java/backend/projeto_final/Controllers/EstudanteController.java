@@ -51,15 +51,10 @@ public class EstudanteController {
         return ResponseEntity.ok(estudanteAtualizado);
     }
 
-    @DeleteMapping("/deletarEstudante/{idEstudante}") // corrigir
-<<<<<<< HEAD
-    public ResponseEntity<Estudante> deletarEstudante(@PathVariable UUID idEstudante){
-        Estudante estudante = estudanteService.deletarEstudante(idEstudante);
-=======
+    @DeleteMapping("/deletarEstudante/{idEstudante}")
     public ResponseEntity<Estudante> deletarEstudante(@PathVariable UUID idEstudante, Authentication authentication){
         Usuario usuarioAutenticado = (Usuario) authentication.getPrincipal();
         Estudante estudante = estudanteService.deletarEstudante(idEstudante, usuarioAutenticado.getId());
->>>>>>> 6345a87315dabc3b609c2cbee7b29fa7262c8061
         return ResponseEntity.ok(estudante);
     }
 
