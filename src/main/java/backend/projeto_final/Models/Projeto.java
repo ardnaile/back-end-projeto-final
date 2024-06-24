@@ -14,7 +14,7 @@ public class Projeto {
     private UUID idProjeto;
     private String tema;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "idCurso")
     private Curso curso;
 
