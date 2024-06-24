@@ -37,8 +37,11 @@ public class EstudanteService {
     }
 
     // deletar estudante pelo id
-    public Estudante deletarEstudante(UUID idEstudante) {
+    public Estudante deletarEstudante(UUID idEstudante, UUID id) {
         Estudante estudante = estudanteRepository.findById(idEstudante).get();
+        if (!estudante.getUsuario().getId().equals(id)) {
+            throw new SecurityException("Usuário não autorizado a deletar este estudante");
+        }
         estudanteRepository.delete(estudante);
         return estudante;
     }

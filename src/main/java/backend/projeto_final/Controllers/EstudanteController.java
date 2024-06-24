@@ -1,9 +1,12 @@
 package backend.projeto_final.Controllers;
 
+import org.springframework.security.core.Authentication;
+
 import backend.projeto_final.Dtos.EstudanteDto;
 import backend.projeto_final.Mappers.EstudanteMapper;
 import backend.projeto_final.Models.Curso;
 import backend.projeto_final.Models.Estudante;
+import backend.projeto_final.Models.Usuario;
 import backend.projeto_final.Services.EstudanteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +52,14 @@ public class EstudanteController {
     }
 
     @DeleteMapping("/deletarEstudante/{idEstudante}") // corrigir
+<<<<<<< HEAD
     public ResponseEntity<Estudante> deletarEstudante(@PathVariable UUID idEstudante){
         Estudante estudante = estudanteService.deletarEstudante(idEstudante);
+=======
+    public ResponseEntity<Estudante> deletarEstudante(@PathVariable UUID idEstudante, Authentication authentication){
+        Usuario usuarioAutenticado = (Usuario) authentication.getPrincipal();
+        Estudante estudante = estudanteService.deletarEstudante(idEstudante, usuarioAutenticado.getId());
+>>>>>>> 6345a87315dabc3b609c2cbee7b29fa7262c8061
         return ResponseEntity.ok(estudante);
     }
 

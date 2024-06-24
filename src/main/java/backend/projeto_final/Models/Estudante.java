@@ -26,12 +26,17 @@ public class Estudante {
     )
     private Set<Projeto> projetos;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
     public Estudante() {}
 
-    public Estudante(String nome, String contato, String temaPreferido) {
+    public Estudante(String nome, String contato, String temaPreferido, Usuario usuario) {
         this.nome = nome;
         this.contato = contato;
         this.temaPreferido = temaPreferido;
+        this.usuario = usuario;
     }
 
     public UUID getIdEstudante() {
@@ -72,5 +77,13 @@ public class Estudante {
 
     public void setTemaPreferido(String temaPreferido) {
         this.temaPreferido = temaPreferido;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
