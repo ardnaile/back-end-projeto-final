@@ -23,8 +23,8 @@ public class EstudanteController {
     @Autowired
     EstudanteMapper estudanteMapper;
 
-    @GetMapping("verTodosEstudantes")
-    public ResponseEntity<List<Estudante>> verTodosEstudantes(@RequestParam int pagina, @RequestParam int itens){
+    @GetMapping("/verTodosEstudantes")
+    public ResponseEntity<List<Estudante>> verTodosEstudantes(@RequestParam(defaultValue = "0") int pagina, @RequestParam(defaultValue = "10") int itens){
         List<Estudante> lista = estudanteService.verTodosEstudantes(pagina, itens);
         return ResponseEntity.ok(lista);
     }
@@ -35,7 +35,7 @@ public class EstudanteController {
         return ResponseEntity.ok(estudante);
     }
 
-    @PostMapping("salvarEstudante")
+    @PostMapping("/salvarEstudante")
     public ResponseEntity<Estudante> salvarEstudante(@RequestBody @Valid EstudanteDto estudanteDto){
         Estudante estudante = estudanteMapper.toEntity(estudanteDto);
         estudanteService.salvarEstudante(estudante);
@@ -48,7 +48,7 @@ public class EstudanteController {
         return ResponseEntity.ok(estudanteAtualizado);
     }
 
-    @DeleteMapping("/deletarEstudante/{idEstudante}")
+    @DeleteMapping("/deletarEstudante/{idEstudante}") // corrigir
     public ResponseEntity<Estudante> deletarEstudante(@PathVariable UUID idEstudante){
         Estudante estudante = estudanteService.deletarEstudante(idEstudante);
         return ResponseEntity.ok(estudante);
